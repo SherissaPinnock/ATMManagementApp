@@ -1,0 +1,40 @@
+﻿@page
+@model ATMManagementApp.Pages.ATMs.IndexModel
+@{
+}
+
+<br />
+
+<h2>List of ATMs</h2>
+<a class='btn btn-outline-primary btn-sm' href='/ATMs/Create'>New ATM</a>
+<table class= "table">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>FI Name</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Type</th>
+            <th>NumTrans</th>
+            <th>NumInvest</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.listATMs)
+        {
+           <tr>
+               <td>@item.atmCode</td>
+               <td>@item.FIName</td>
+               <td>@item.atmName</td>
+               <td>@item.atmAddress</td>
+               <td>@item.atmType</td>
+               <td>@item.totalTrans</td>
+               <td>@item.totalInvest</td>
+               <td>
+                   <a class="btn btn-primary btn-sm" href="/ATMs/Edit?id=@item.atmCode">Edit</a>
+                    <a class="btn btn-primary btn-sm" href="/ATMs/Delete?id=@item.atmCode">Delete</a>
+               </td>
+           </tr> 
+        }
+    </tbody>
+</table>
