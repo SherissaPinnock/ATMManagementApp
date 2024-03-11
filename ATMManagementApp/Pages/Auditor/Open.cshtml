@@ -1,0 +1,69 @@
+﻿@page
+@model ATMManagementApp.Pages.Auditor.OpenModel
+@{
+}
+<h2>New Investigation</h2>
+
+@if (Model.errorMessage.Length > 0)
+{
+    <div class='alert alert-warning alery-dismissible fade show' role='alert'>
+        <strong>@Model.errorMessage</strong>
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>
+}
+<form method="POST">
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">ATM Code</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="atmCode" value="" />
+        </div>
+
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Transaction Code in Query</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="transactionCode" value="" />
+        </div>
+
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Purpose</label>
+        <div class="col-sm-6">
+            <select class="form-select" name="purpose">
+                <option value="" selected>Select Purpose</option>
+                <option value="Accounting Irregularities">Accounting Irregularities</option>
+                <option value="Security Breach">Security Breach</option>
+                <option value="Fraudulent Activity">Fraudulent Activity</option>
+                <option value="Customer Complaint">Customer Complaint</option>
+                <option value="Cybersecurity Threat">Cybersecurity Threat</option>
+                <option value="ATM Cash Discrepancy">ATM Cash Discrepancy</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Auditor ID</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="auditorID" value="" />
+        </div>
+
+    </div>
+
+    @if (Model.successMessage.Length > 0)
+    {
+        <div class="row mb-3">
+            <div class='alert alert-success alert dismissable fade show' role='alert'>
+                <strong>@Model.successMessage</strong>
+                <button type='button' class="btn-close" data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+        </div>
+    }
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/" role="button">Cancel</a>
+        </div>
+
+</form>

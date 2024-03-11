@@ -7,9 +7,16 @@ namespace ATMManagementApp.Services
 {
     public class ApplicationDBContext: IdentityDbContext<ApplicationUser>
     {
+        public ApplicationDBContext()
+        {
+        }
+
         public ApplicationDBContext(DbContextOptions options): base(options) 
         { 
         }
+
+        public object InvestigationReport { get; internal set; }
+
 
 
         //Creating roles

@@ -1,0 +1,49 @@
+﻿@page
+@model ATMManagementApp.Pages.Auditor.CloseInvestigationModel
+@{
+}
+
+<h2>Close Investigation</h2>
+
+@if (Model.errorMessage.Length > 0)
+{
+    <div class='alert alert-warning alery-dismissible fade show' role='alert'>
+        <strong>@Model.errorMessage</strong>
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>
+}
+<form method="POST">
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Confirm ReferenceNum</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="referenceNum" value="" />
+        </div>
+
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Status After Investigation</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="status" value="" />
+        </div>
+
+    </div>
+    
+
+    @if (Model.successMessage.Length > 0)
+    {
+        <div class="row mb-3">
+            <div class='alert alert-success alert dismissable fade show' role='alert'>
+                <strong>@Model.successMessage</strong>
+                <button type='button' class="btn-close" data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+        </div>
+    }
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/Auditor/AuditorIndex/" role="button">Cancel</a>
+        </div>
+
+</form>

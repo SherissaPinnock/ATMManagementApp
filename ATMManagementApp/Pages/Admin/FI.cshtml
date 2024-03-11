@@ -1,0 +1,86 @@
+﻿@page
+@model ATMManagementApp.Pages.Admin.FIModel
+@{
+}
+<h2><center>FI Overview</center></h2>
+<style> 
+    .widget-container {
+        width: 50%; /* Adjust the width as needed */
+        margin: 0 auto; /* Center the widget */
+        background-color: #f0f0f0; /* Background color for the widget */
+        border-radius: 10px; /* Rounded corners */
+        padding: 20px; /* Add padding */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+    }
+
+    .table1 {
+        width: 100%; /* Make table width 100% of its container */
+    }
+
+        .table1 th, .table1 td {
+            padding: 10px; /* Add padding to cells */
+            text-align: left; /* Align text to the left */
+        }
+
+        .table1 th {
+            background-color: #ddd; /* Header background color */
+        }
+
+        .table1 tbody tr:nth-child(even) {
+            background-color: #f9f9f9; /* Alternate row background color */
+        }
+
+</style>
+
+<div class="widget-container">
+    <table class="table1">
+        <thead>
+            <tr>
+                <th>FI Name</th>
+                <th>Investigations in the Past Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.listInvests)
+            {
+                <tr>
+                    <td>@item.FIName</td>
+                    <td>@item.totalInvest</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+</br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>FI Number</th>
+            <th>FI Name</th>
+            <th>Address</th>
+            <th>Main Banker</th>
+            <th>Branch No</th>
+            <th>Phone</th>
+            <th>Deposit</th>
+            <th>Revenue</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.listFIs)
+        {
+            <tr>
+                <td>@item.FINumber</td>
+                <td>@item.FIName</td>
+                <td>@item.address</td>
+                <td>@item.mainBanker</td>
+                <td>@item.branchNo</td>
+                <td>@item.contactNum</td>
+                <td>@item.deposit</td>
+                <td>@item.revenue</td>
+               
+            </tr>
+        }
+    </tbody>
+</table>

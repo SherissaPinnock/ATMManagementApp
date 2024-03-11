@@ -23,6 +23,16 @@
                 <span asp-validation-for="Input.LastName" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
+                <input asp-for="Input.BankName" class="form-control" autocomplete="bank" aria-required="true" placeholder="" />
+                <label asp-for="Input.BankName">Bank Name</label>
+                <span asp-validation-for="Input.BankName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.BranchNumber" class="form-control" autocomplete="branch" aria-required="true" placeholder="" />
+                <label asp-for="Input.BranchNumber">Branch Number</label>
+                <span asp-validation-for="Input.BranchNumber" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
                 <input asp-for="Input.PhoneNumber" class="form-control" autocomplete="username" aria-required="true" placeholder="876-123-4567" />
                 <label asp-for="Input.PhoneNumber">Phone Number</label>
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
@@ -32,7 +42,11 @@
                 <label asp-for="Input.Address">Address</label>
                 <span asp-validation-for="Input.Address" class="text-danger"></span>
             </div>
-
+            <div class="form-floating mb-3">
+                <input asp-for="Input.parish" class="form-control" autocomplete="parish" aria-required="true" placeholder="" />
+                <label asp-for="Input.parish">Parish</label>
+                <span asp-validation-for="Input.parish" class="text-danger"></span>
+            </div>
             <div class="form-floating mb-3">
                 <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
                 <label asp-for="Input.Email">Email</label>
@@ -48,6 +62,7 @@
                 <label asp-for="Input.ConfirmPassword">Confirm Password</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
+            
 
             <div class="row mb-3">
                 <div class="offset-sm-4 col-sm-4 d-grid">

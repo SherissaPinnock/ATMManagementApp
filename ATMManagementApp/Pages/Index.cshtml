@@ -4,7 +4,70 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/css/style.css">
+
+    
+</head>
+
+
+<body class="homebody">
+
+    <div class="homecontainer">
+        
+    <div class="logo">
+              
+        </div>
+        <div class="reg-content">
+        <div class="text-center">
+            <h1 class="display-4">@Model.BankName</h1>
+        </div>            
+    <div class="content">
+                <div class="content-position">
+                    <h1><img id="logo-heading" src="/images/logo-symbol.png" alt="logo">FSC</h1>
+                    <p>The mandate of the Financial Services Commission (FSC) 
+                        is to supervise and regulate the securities, insurance 
+                        and private pensions industries. As such the FSC may be 
+                        described as an integrated financial services regulator.</p>           
+
+                </div>
+               
+            </div>
+        <div class="form">
+                <form id="form" action="/register" method="post">
+                    <div class="input-container">
+                        <div class="text-wrap">
+                            <input id="email" name="email" type="text" placeholder="Email">
+                        </div>
+                        <button type="submit">Sign Up</button>
+                    </div>
+                    <div class="error"></div>
+                </form>    
+               
+        </div>
+    </div>
+    <div class="center-content">
+        <div class="center-content1">
+            
+        </div>
+        <div class="center-content2">
+
+        </div>
+    </div>
+    <div class="footer">
+        <footer>
+            <p id="footer">&copy; 2024 Financial Services Commission. All rights reserved.</p>
+        </footer>                      
+    </div>
+    </div>
+</body>
+</html>
+

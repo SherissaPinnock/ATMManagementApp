@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using static ATMManagementApp.Pages.ATMs.IndexModel;
 
 namespace ATMManagementApp.Pages.ATMs
 {

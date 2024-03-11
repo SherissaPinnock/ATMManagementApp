@@ -7,18 +7,57 @@
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-page="/ATMs/Index">ATMs</a>
-    </li>
-    <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">User</a>
-        <ul class="dropdown-menu">
-                <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index"></a>Profile</li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout"></a>Logout</li>
-        </ul>
-    </li>
-   
+        if (User.IsInRole("admin"))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-page="/Admin/AdminIndex">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-page="/Admin/FI">FIs</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">Admin</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index"></a>Profile</li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout"></a>Logout</li>
+                </ul>
+            </li>
+        }
+        else if (User.IsInRole("auditor"))
+        {
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">Investigations</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" asp-area="" asp-page="/Auditor/AuditorIndex"></a>Ongoing</li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" asp-area="" asp-page="/Auditor/Past"></a>Past</li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">Auditor</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index"></a>Profile</li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout"></a>Logout</li>
+                </ul>
+            </li>
+        }
+        else if (User.IsInRole("fi"))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-page="/ATMs/Index">ATMs</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">User</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index"></a>Profile</li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout"></a>Logout</li>
+                </ul>
+            </li>
+        }
+        
 }
 else
 {

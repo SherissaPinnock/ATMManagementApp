@@ -1,0 +1,70 @@
+﻿@page
+@model ATMManagementApp.Pages.Auditor.PastModel
+@{
+}
+
+<h2 class="text-center">Past Investigations</h2>
+
+<div class="row">
+    <div class="col-auto my-1">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Reference Number">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button">Search</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>TCode</th>
+            <th>TStatus</th>
+            <th>TType</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Card#</th>
+            <th>Account#</th>
+            <th>REF#</th>
+            <th>Purpose</th>
+            <th>Opened</th>
+            <th>Ended</th>
+            <th>Auditor</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.pastInvests)
+        {
+            <tr>
+                <td>@item.transactionCode</td>
+                <td>@item.transactionStatus</td>
+                <td>@item.transactionType</td>
+                <td>@item.transactionDate</td>
+                <td>@item.amount</td>
+                <td>@item.cardNumber</td>
+                <td>@item.accountNumber</td>
+                <td>@item.referenceNum</td>
+                <td>@item.purpose</td>
+                <td>@item.investigationStartDate</td>
+                <td>@item.investigationEndDate</td>
+                <td>@item.auditorName</td>
+           
+            </tr>
+        }
+    </tbody>
+</table>
+
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-end">
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</nav>

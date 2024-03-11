@@ -19,6 +19,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using ATMManagementApp.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace ATMManagementApp.Areas.Identity.Pages.Account
 {
@@ -79,10 +81,21 @@ namespace ATMManagementApp.Areas.Identity.Pages.Account
             public string LastName { get; set; }
 
             [Required]
+
+            public string BankName { get; set; }
+
+            [Required]
+
+            public int BranchNumber { get; set; }
+
+            [Required]
             public string PhoneNumber { get; set; }
 
             [Required]
             public string Address { get; set; }
+
+            [Required]
+            public string parish { get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -129,10 +142,13 @@ namespace ATMManagementApp.Areas.Identity.Pages.Account
                 {
                     FirstName=Input.FirstName, 
                     LastName=Input.LastName,
+                    BankName = Input.BankName,
+                    BranchNumber = Input.BranchNumber,
                     UserName=Input.Email,
                     Email= Input.Email,
                     PhoneNumber=Input.PhoneNumber,
                     Address=Input.Address,
+                    parish=Input.parish,
                     CreatedAt=DateTime.Now,
                 };
 
@@ -143,7 +159,13 @@ namespace ATMManagementApp.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
+                    //set user role
+                    await _userManager.AddToRoleAsync(user, "fi");
+
+                    //get user id
                     var userId = await _userManager.GetUserIdAsync(user);
+
+
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(
@@ -197,5 +219,36 @@ namespace ATMManagementApp.Areas.Identity.Pages.Account
             }
             return (IUserEmailStore<ApplicationUser>)_userStore;
         }
+
+        // Method to retrieve FINumber for the bank
+        public async Task<int> GetFINumberForBank(string bankName)
+        {
+            // Use DbContext to execute a raw SQL query
+            using (var dbContext = new ApplicationDBContext())
+            {
+                var sql = $"SELECT FINumber FROM FinancialInstitution WHERE Name = '{bankName}'";
+
+                // Execute the raw SQL query
+                var fiNumber = await dbContext.Database.ExecuteSqlRawAsync(sql);
+
+                return fiNumber;
+            }
+        }
+
+
+        // Method to update Users table with the obtained FINumber
+        private async Task UpdateUsersTableWithFINumber(string userId, int fiNumber)
+        {
+            // Retrieve the user from the database
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user != null)
+            {
+                // Update the FINumber property
+                user.FINumber = fiNumber;
+                // Save changes to the database
+                await _userManager.UpdateAsync(user);
+            }
+        }
+
     }
 }

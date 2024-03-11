@@ -6,7 +6,7 @@ namespace ATMManagementApp.Pages.ATMs
 {
     public class CreateModel : PageModel
     {
-        public ATMInfo atmInfo=new ATMInfo("FINumber", "atmName", "atmAddress", "atmType");
+        public IndexModel.ATMInfo atmInfo =new IndexModel.ATMInfo("FINumber", "atmName", "atmAddress", "atmType");
         public String errorMessage = "";
         public String successMessage = "";
         public void OnGet()
