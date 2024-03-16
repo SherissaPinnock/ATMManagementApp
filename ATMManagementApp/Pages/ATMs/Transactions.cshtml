@@ -1,0 +1,35 @@
+﻿@page
+@model ATMManagementApp.Pages.ATMs.TransactionsModel
+@{
+}
+<h2 class="text-center">My Flagged Transactions</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>TCode</th>
+            <th>TStatus</th>
+            <th>TType</th>
+            <th>Amount</th>
+            <th>Account#</th>
+            <th>Purpose</th>
+            <th>Start Date</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.myTransactions)
+        {
+            <tr>
+                <td>@item.transactionCode</td>
+                <td>@item.transactionStatus</td>
+                <td>@item.transactionType</td>
+                <td>@item.amount</td>
+                <td>@item.accountNumber</td>
+                <td>@item.purpose</td>
+                <td>@item.investigationStartDate</td>
+               
+                
+            </tr>
+        }
+    </tbody>
+</table>

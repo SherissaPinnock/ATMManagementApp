@@ -1,0 +1,47 @@
+﻿@page
+@model ATMManagementApp.Pages.Admin.AuditorPageModel
+@{
+}
+<h2 class="text-center">Active Auditors</h2>
+
+
+<div class="row">
+    <div class="col-auto my-1">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button">Search</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Ongoing Investigations</th>
+            <th>Completed Investigations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.listAuditors)
+        {
+            <tr>
+                <td>@item.auditorID</td>
+                <td>@item.auditorName</td>
+                <td>@item.auditorPhone</td>
+                <td>@item.ongoingInvest</td>
+                <td>@item.pastInvest</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Admin/Assign?auditorID=@item.auditorID">Assign</a>
+                    <a class="btn btn-danger btn-sm" href="/Admin/DeleteAuditor?auditorID=@item.auditorID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

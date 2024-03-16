@@ -98,8 +98,9 @@ namespace ATMManagementApp.Pages.Investigations
             public string auditorName;
             public string auditorID;
             public string atmCode;
+             
 
-            //Default Constructor
+            //Primary Constructor
             public InvestInfo(String transactionCode, String transactionStatus, String transactionType, String transactionDate
                 , String amount, String cardNumber, String accountNumber, String purpose, String referenceNum, String investigationStartDate, String
                 investigationEndDate, String auditorName)
@@ -140,6 +141,13 @@ namespace ATMManagementApp.Pages.Investigations
                 this.transactionStatus = status;
             }
 
+            public InvestInfo(String referenceNum, String purpose, String investigationStartDate)
+            {
+                this.referenceNum = referenceNum;
+                this.purpose= purpose;
+                this.investigationStartDate= investigationStartDate;
+            }
+
             //Constructor for creating new investigation
             public InvestInfo(String atmCode, String transactionCode, String purpose, String auditorID)
             {
@@ -147,6 +155,26 @@ namespace ATMManagementApp.Pages.Investigations
                 this.transactionCode = transactionCode;
                 this.purpose = purpose;
                 this.auditorID = auditorID;
+            }
+            //For Admin View
+            public void InvestInfo2(string accountNumber, string transactionDate, string amount, string status)
+            {
+                this.accountNumber = accountNumber;
+                this.transactionDate = transactionDate;
+                this.amount = amount;
+                this.transactionStatus= status;
+            }
+
+            public InvestInfo(String transactionCode, String transactionStatus, String transactionType,
+                String amount, String accountNumber, String purpose, String investigationStartDate)
+            {
+                this.transactionCode = transactionCode;
+                this.transactionStatus = transactionStatus;
+                this.transactionType = transactionType;
+                this.amount = amount;
+                this.accountNumber = accountNumber;
+                this.purpose = purpose;
+                this.investigationStartDate = investigationStartDate;
             }
         }
 

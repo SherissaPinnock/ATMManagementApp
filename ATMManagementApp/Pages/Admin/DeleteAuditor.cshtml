@@ -1,0 +1,29 @@
+﻿@page
+@using System.Data.SqlClient;
+
+@{
+    try
+    {
+        String auditorID = Request.Query["auditorID"];
+        Console.WriteLine("Auditor ID: " + auditorID);
+        String connectionString = "Data Source=DESKTOP-QLJKDBL\\SQLEXPRESS;Initial Catalog=FinancialServicesCommisson;Integrated Security=True;";
+
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+            String sql = "DELETE FROM Auditor WHERE auditorID=@auditorID";
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@auditorID", auditorID);
+                command.ExecuteNonQuery();
+            }
+        }
+    }
+    catch(Exception ex)
+    {
+        
+        Console.WriteLine("Exception: " + ex.ToString());
+    }
+    Response.Redirect("/Admin/AuditorPage");
+}
+}

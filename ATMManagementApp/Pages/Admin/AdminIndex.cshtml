@@ -1,6 +1,7 @@
 ﻿@page
 @model ATMManagementApp.Pages.Admin.AdminIndexModel
 @{
+
 }
 
 
@@ -17,7 +18,7 @@
 </head>
 
 <body>
-
+    
     <!-- Main Content -->
     <div class="content">
         <!-- Navbar -->
@@ -68,7 +69,7 @@
                     <i class='bx bx-calendar-check'></i>
                     <span class="info">
                         <h3>
-                            1,074
+                            @Model.NumberOfFailed
                         </h3>
                         <p>Failed Transactions</p>
                     </span>
@@ -77,16 +78,16 @@
                     <i class='bx bx-show-alt'></i>
                     <span class="info">
                         <h3>
-                            3,944
+                            @Model.NumberOfATMs
                         </h3>
-                        <p>Users</p>
+                        <p>Active ATMs</p>
                     </span>
                 </li>
                 <li>
                     <i class='bx bx-line-chart'></i>
                     <span class="info">
                         <h3>
-                            14,721
+                            @Model.NumberOfTransactions
                         </h3>
                         <p>Transactions</p>
                     </span>
@@ -95,7 +96,7 @@
                     <i class='bx bx-dollar-circle'></i>
                     <span class="info">
                         <h3>
-                            11
+                            @Model.NumberOfFIs
                         </h3>
                         <p>Total banks</p>
                     </span>
@@ -122,30 +123,14 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach (var item in Model.transList){
                             <tr>
-                                <td>
-                                    <p>John Doe</p>
-                                </td>
-                                <td>14-08-2023</td>
-                                <td>1,000,000</td>
-                                <td><span class="status completed">Completed</span></td>
+                            <td>@item.accountNumber</td>
+                            <td>@item.transactionDate</td>
+                            <td>@item.amount</td>
+                            <td>@item.transactionStatus</td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <p>John Doe</p>
-                                </td>
-                                <td>14-08-2023</td>
-                                <td>7,000,000</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Ash Bob</p>
-                                </td>
-                                <td>14-08-2023</td>
-                                <td>7,000,000</td>
-                                <td><span class="status process">Failed</span></td>
-                            </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -162,21 +147,21 @@
                         <li class="completed">
                             <div class="task-title">
                                 <i class='bx bx-check-circle'></i>
-                                <p>Shut Down NCB</p>
+                                <p></p>
                             </div>
                             <i class='bx bx-dots-vertical-rounded'></i>
                         </li>
                         <li class="completed">
                             <div class="task-title">
                                 <i class='bx bx-check-circle'></i>
-                                <p> Hate School</p>
+                                <p> </p>
                             </div>
                             <i class='bx bx-dots-vertical-rounded'></i>
                         </li>
                         <li class="not-completed">
                             <div class="task-title">
                                 <i class='bx bx-x-circle'></i>
-                                <p>My Energy Level</p>
+                                <p></p>
                             </div>
                             <i class='bx bx-dots-vertical-rounded'></i>
                         </li>
